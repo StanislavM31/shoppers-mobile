@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Svg, { Defs, Image, Path, Pattern, Use } from 'react-native-svg'
 
-
 function Pngwing(props: any) {
 	return (
 		<Svg
