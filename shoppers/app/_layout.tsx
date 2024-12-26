@@ -33,6 +33,7 @@ export default function RootLayout() {
 {/*         <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> */}
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="/login" />
+        <Stack.Screen name="/signup" />
       </Stack>
 
   );
