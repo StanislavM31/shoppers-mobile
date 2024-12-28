@@ -9,7 +9,7 @@ export default function signup() {
         <>
             <View style={{ alignItems: 'center', gap: 67, backgroundColor: 'white', flex: 1 }}>
 
-                <View style={{ justifyContent: 'center', marginLeft: 40, marginTop: 120 }}>
+                <View style={{ alignItems:"center", justifyContent: 'center', marginLeft: 40, marginTop: 120 }}>
                     <Text style={{ fontFamily: ' InterBold', fontSize: 36, color: '#000000' }}>Welcome!</Text>
                     <Text style={{ fontFamily: ' InterBold', fontSize: 14, color: '#606060' }}>Create a new account</Text>
                 </View>

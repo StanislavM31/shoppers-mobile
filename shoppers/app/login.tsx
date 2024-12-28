@@ -1,8 +1,15 @@
 import { Link } from 'expo-router'
+import { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 
 export default function Login() {
-
+    const [user, setUser] = useState({ email: "", password: "" });
+    const changeUser = (value: any, tag: any) => {
+        setUser({ ...user, [tag]: value });
+    }
+    const pressButton = () => {
+        console.log('user:', user)
+    }
     return (
         <>
             <View style={{ alignItems: 'center', gap: 67, backgroundColor: 'white', flex: 1 }}>
@@ -14,15 +21,17 @@ export default function Login() {
 
                     <View style={{ gap: 12, width: '100%' }}>
                         <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Username</Text>
-                        <TextInput style={styles.inp} ></TextInput>
+                        <TextInput style={styles.inp} placeholder="email" onChangeText={(value) => changeUser(value, 'email')}></TextInput>
                     </View>
 
                     <View style={{ gap: 12, width: '100%' }}>
                         <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Password</Text>
-                        <TextInput style={styles.inp} secureTextEntry={false} ></TextInput>
+                        <TextInput style={styles.inp} placeholder="password" onChangeText={(value) => changeUser(value, 'password')} secureTextEntry={false} ></TextInput>
                     </View>
-                    
-                    <TouchableOpacity style={styles.btn}><Text style={styles.titleSign}>SIGN IN</Text></TouchableOpacity>
+
+                    <TouchableOpacity onPress={pressButton} style={styles.btn}><Text
+                         style={styles.titleSign}>SIGN IN</Text>
+                         </TouchableOpacity>
                 </View>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, justifyContent: 'center' }}>
