@@ -7,28 +7,27 @@ export default function Login() {
         <>
             <View style={{ alignItems: 'center', gap: 67, backgroundColor: 'white', flex: 1 }}>
                 <View style={{ width: '90%', alignContent: 'center', marginLeft: 40, marginTop: 120 }}>
-                    <Text style={{ fontFamily: 'InterRegular', fontSize: 24, color: '#000000' }}>Welcome back!</Text>
-                    <Text style={{ fontFamily: 'InterRegular', fontSize: 12, color: '#606060' }}>Login with username & password</Text>
+                    <Text style={{ fontFamily: 'InterRegular', fontSize: 24, color: '#000000' }}>Welcome Back !</Text>
+                    <Text style={{ fontFamily: 'InterRegular', fontSize: 12, color: '#606060' }}>Login with Username & password</Text>
                 </View>
                 <View style={styles.wrapperInp}>
-                    <Text style={{ gap: 12, width: '100%' }}>Username</Text>
-                    <TextInput style={styles.inp}></TextInput>
-                    <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Password</Text>
-                    <TextInput style={styles.inp} secureTextEntry={false}></TextInput>
-                </View>
 
-                <View style={{ gap: 12, width: '100%' }}>
+                    <View style={{ gap: 12, width: '100%' }}>
+                        <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Username</Text>
+                        <TextInput style={styles.inp} ></TextInput>
+                    </View>
+
+                    <View style={{ gap: 12, width: '100%' }}>
+                        <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Password</Text>
+                        <TextInput style={styles.inp} secureTextEntry={false} ></TextInput>
+                    </View>
                     
+                    <TouchableOpacity style={styles.btn}><Text style={styles.titleSign}>SIGN IN</Text></TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.btn} >
-                    <Text style={styles.titleSign}>SiGN IN</Text>
-                </TouchableOpacity>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, justifyContent: 'center' }}>
                     <Text style={[styles.textFooter, { color: '#000000' }]}>Create a new account?</Text>
-                    <Link href={'/signup'}>
-                        <Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign Up</Text>
-                    </Link>
+                    <Link href={'/signup'}><Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign Up</Text></Link>
                 </View>
             </View>
         </>

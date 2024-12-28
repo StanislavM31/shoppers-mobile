@@ -1,152 +1,74 @@
-import { Link, useRouter } from 'expo-router'
-import { useState } from 'react'
-import {
-	StyleSheet,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from 'react-native'
+import { Link, useRouter } from "expo-router";
+import { useState } from "react";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 
-export default function Login() {
-	const inputElems = [
-		{ label: 'Username', value: 'email', isSecure: false },
-		{ label: 'Password', value: 'password', isSecure: true },
-	]
+export default function signup() {
 
-	const [user, setUser] = useState({ email: '', password: '' })
 
-	const router = useRouter()
-	const response = (value: any, tag: any) => {
-		setUser({ ...user, [tag]: value })
-	}
+    return (
+        <>
+            <View style={{ alignItems: 'center', gap: 67, backgroundColor: 'white', flex: 1 }}>
 
-	const authentication = () => {
-		try {
-			if (!user.email || !user.password) throw new Error('пустое значение')
-			if (user.password.length < 8) throw new Error('пароль менее 8 символов')
-			console.log(user)
-			/* router.push(`/(tabs)/user?name=${encodeURIComponent(user.email)}`) */
-		} catch (error: any) {
-			console.error(error.message)
-		}
-	}
+                <View style={{ justifyContent: 'center', marginLeft: 40, marginTop: 120 }}>
+                    <Text style={{ fontFamily: ' InterBold', fontSize: 36, color: '#000000' }}>Welcome!</Text>
+                    <Text style={{ fontFamily: ' InterBold', fontSize: 14, color: '#606060' }}>Create a new account</Text>
+                </View>
 
-	return (
-		<>
-			<View
-				style={{
-					alignItems: 'center',
-					gap: 67,
-					backgroundColor: 'white',
-					flex: 1,
-				}}
-			>
-				<View
-					style={{
-						width: '90%',
-						alignContent: 'center',
-						marginLeft: 30,
-						marginTop: 120,
-					}}
-				>
-					<Text style={styles.titleBig}>Welcome Back !</Text>
-					<Text style={styles.titleSmall}>Login with Username & password</Text>
-				</View>
-				<View style={styles.wrapperInp}>
-					{inputElems.map((elem, index) => (
-						<View key={index} style={{ gap: 12 }}>
-							<Text style={styles.titleBtn}>{elem.label}</Text>
-							<TextInput
-								style={styles.inp}
-								secureTextEntry={elem.isSecure}
-								onChangeText={value => response(value, elem.value)}
-							/>
-						</View>
-					))}
-					<TouchableOpacity style={styles.btn} onPress={authentication}>
-						<Text style={styles.titleSing}>SIGN IN</Text>
-					</TouchableOpacity>
-				</View>
+                <View style={styles.wrapperInp}>
 
-				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<Text
-						style={{
-							fontFamily: 'Inter',
-							fontSize: 14,
-							fontWeight: 300,
-							color: '#000000',
-						}}
-					>
-						Create a new account?{' '}
-					</Text>
-					<Link href={'/signup'}>
-						<Text
-							style={{
-								fontFamily: 'Inter',
-								fontSize: 14,
-								fontWeight: 300,
-								color: '#120EDB',
-								textDecorationLine: 'none',
-							}}
-						>
-							Sign Up
-						</Text>
-					</Link>
-				</View>
-			</View>
-		</>
-	)
+ 
+                        <View style={{ gap: 12, width: '100%' }}>
+                            <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}></Text>
+                            <TextInput style={styles.inp} ></TextInput>
+                        </View>
+                    
+
+                    <TouchableOpacity style={styles.btn} ><Text style={styles.titleSign}>SIGN UP</Text></TouchableOpacity>
+
+                </View>
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, justifyContent: 'center' }}>
+                    <Text style={[styles.textFooter, { color: '#000000' }]}>Already have an account?</Text>
+                    <Link href={'/login'}><Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign In</Text></Link>
+                </View>
+            </View>
+        </>
+    )
 }
 
 const styles = StyleSheet.create({
-	titleBig: {
-		fontFamily: 'Inter',
-		fontSize: 24,
-		fontWeight: 400,
-		color: '#000000',
-	},
-	titleSmall: {
-		fontFamily: 'Inter',
-		fontSize: 12,
-		fontWeight: 400,
-		color: '#606060',
-	},
-	wrapperInp: {
-		width: '90%',
-		alignContent: 'center',
-		borderRadius: 20,
-		borderColor: '#606060',
-		borderWidth: 1,
-		gap: 24,
-		paddingVertical: 36,
-		paddingHorizontal: 36,
-	},
-	titleBtn: {
-		fontFamily: 'Inter',
-		fontSize: 14,
-		fontWeight: 700,
-		color: '#606060',
-	},
-	inp: {
-		borderRadius: 20,
-		borderColor: '#606060',
-		borderWidth: 2,
-		paddingHorizontal: 10,
-		paddingVertical: 10,
-	},
-	btn: {
-		borderRadius: 40,
-		backgroundColor: '#F9EF05',
-		alignContent: 'center',
-		paddingHorizontal: 100,
-		paddingVertical: 16,
-		alignItems: 'center',
-	},
-	titleSing: {
-		fontFamily: 'Inter',
-		fontSize: 14,
-		fontWeight: 700,
-		color: '#D04444',
-	},
+    wrapperInp: {
+        width: '90%',
+        alignItems: 'flex-start',
+        borderRadius: 20,
+        borderColor: '#CECECE',
+        borderWidth: 3,
+        gap: 24,
+        paddingHorizontal: 36,
+        paddingVertical: 36,
+    },
+    inp: {
+        width: '100%',
+        borderRadius: 20,
+        borderColor: '#CECECE',
+        borderWidth: 2,
+        paddingHorizontal: 15,
+        paddingVertical: 10,
+    },
+    btn: {
+        width: '100%',
+        borderRadius: 40,
+        backgroundColor: '#F9EF05',
+        padding: 15,
+        alignItems: 'center',
+    },
+    titleSign: {
+        fontFamily: 'InterBold',
+        fontSize: 14,
+        color: '#D04444',
+    },
+    textFooter: {
+        fontFamily: 'InterLight',
+        fontSize: 14,
+    }
 })
