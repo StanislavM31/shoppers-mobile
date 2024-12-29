@@ -21,12 +21,12 @@ export default function Login() {
 
                     <View style={{ gap: 12, width: '100%' }}>
                         <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Username</Text>
-                        <TextInput style={styles.inp} placeholder="email" onChangeText={(value) => changeUser(value, 'email')}></TextInput>
+                        <TextInput style={styles.inp} placeholder="email" placeholderTextColor="#A9A9A9" onChangeText={(value) => changeUser(value, 'email')}></TextInput>
                     </View>
 
                     <View style={{ gap: 12, width: '100%' }}>
                         <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#000000' }}>Password</Text>
-                        <TextInput style={styles.inp} placeholder="password" onChangeText={(value) => changeUser(value, 'password')} secureTextEntry={false} ></TextInput>
+                        <TextInput style={styles.inp} placeholder="password" placeholderTextColor="#A9A9A9" onChangeText={(value) => changeUser(value, 'password')} secureTextEntry={false} ></TextInput>
                     </View>
 
                     <TouchableOpacity onPress={pressButton} style={styles.btn}><Text
