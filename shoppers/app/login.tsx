@@ -12,11 +12,11 @@ export default function Login() {
 
     const goToProductsMenu = () => {
         try {
-            if (!user.username || !user.password) throw new Error('пустое значение')
+            if (!user.username || !user. password) throw new Error('пустое значение')
             if (user.password.length < 8) throw new Error('пароль не менее 8 символов')
-            // axios
-
-            router.push(`/user?name=${(user.username)}`);
+            
+                //axios
+            router.push(`/products`);
 
         } catch (err: any) {
             console.error(err.message)
@@ -46,7 +46,7 @@ export default function Login() {
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, justifyContent: 'center' }}>
                     <Text style={[styles.textFooter, { color: '#000000' }]}>Create a new account?</Text>
-                    <Link href={'/signup'}><Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign Up</Text></Link>
+                    <Link href={'/register'}><Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign Up</Text></Link>
                 </View>
             </View>
         </>
