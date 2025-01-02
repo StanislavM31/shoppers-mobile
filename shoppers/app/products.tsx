@@ -4,6 +4,8 @@ import { iProduct } from '@/interfaces';
 import { Text, View, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import { useRouter } from 'expo-router';
 
+import Header from '@/components/Header';
+
 
 function Products() {
     const router = useRouter()
@@ -19,6 +21,7 @@ function Products() {
     )
 
     return <>
+    <Header/>
     <View style={{ gap: 62, flex: 1 }}>
         <View style={{ flexDirection: 'row', gap: 60, justifyContent: 'center', flexWrap: 'wrap' }}>
             {container}
@@ -31,7 +34,7 @@ function Products() {
 
 const styles = StyleSheet.create({
     item: {
-        // padding: 15,
+        padding: 20,
         width: 134,
         height: 180,
         borderRadius: 30,
