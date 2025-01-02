@@ -24,7 +24,7 @@ export default function NotFoundScreen({ navigation }: any) {
                 alignItems: 'center',
                 gap: 41,
             }}>
-            <Text style={styles.text}>WELCOME to ShOPPERS</Text>
+            <Text style={styles.text}>WELCOME to SHOPPERS</Text>
             <Pngwing />
         </TouchableOpacity>
     );
@@ -32,7 +32,7 @@ export default function NotFoundScreen({ navigation }: any) {
 
 const styles = StyleSheet.create({
     text: {
-        fontFamily: 'Inter',
+        fontFamily: 'InterBold',
         fontSize: 36,
         fontWeight: '600',
         textAlign: 'center',

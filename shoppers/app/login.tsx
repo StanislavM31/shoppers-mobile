@@ -46,7 +46,9 @@ export default function Login() {
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5, justifyContent: 'center' }}>
                     <Text style={[styles.textFooter, { color: '#000000' }]}>Create a new account?</Text>
-                    <Link href={'/register'}><Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign Up</Text></Link>
+                    <TouchableOpacity onPress={()=>router.replace('/register')}>
+                        <Text style={[styles.textFooter, { color: '#120EDB', textDecorationLine: 'underline' }]}>Sign Up</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </>
