@@ -1,34 +1,50 @@
-const obj = [
-    {
-      id: 1,
-      title: 'Adidas Shoe',
-      price: 20000.00,
-    },
-    {
-      id: 2,
-      title: 'Nike Sneakers',
-      price: 18000.00,
-    },
-    {
-      id: 3,
-      title: 'Puma Running Shoes',
-      price: 22000.00,
-    },
-    {
-      id: 4,
-      title: 'Reebok Classic',
-      price: 15000.00,
-    },
-    {
-      id: 5,
-      title: 'New Balance 574',
-      price: 21000.00,
-    },
-    {
-      id: 6,
-      title: 'Asics Gel-Kayano',
-      price: 24000.00,
-    }
-  ];
+import {iProduct} from '@/interfaces'
+import Product from '@/assets/images/Product'
+import Product2 from '@/assets/images/SmartWatch'
+import Product3 from '@/assets/images/AdidasShoe'
 
-  export default obj;
+
+const obj:iProduct[] = [{
+    id: 1,
+    title: 'Adidas Shoe',
+    price: 20000.00,
+
+    img:<Product width={'100%'} height={'100%'} />,
+},
+{
+    id: 2,
+    title: 'Smart Watch',
+    price: 5000.00,
+
+    img:<Product2 width={'100%'} height={'100%'} />,
+},
+{
+    id: 3,
+    title: 'Adidas Shoe',
+    price: 20000.00,
+
+    img:<Product3 width={'100%'} height={'100%'} />,
+},
+{
+    id: 4,
+    title: 'Adidas Shoe',
+    price: 20000.00,
+
+    img:<Product width={'100%'} height={'100%'} />,
+},
+{
+    id: 5,
+    title: 'Adidas Shoe',
+    price: 20000.00,
+
+    img:<Product width={'100%'} height={'100%'} />,
+},
+{
+    id: 6,
+    title: 'Adidas Shoe',
+    price: 20000.00,
+
+    img:<Product width={'100%'} height={'100%'} />,
+}]
+
+export default obj
