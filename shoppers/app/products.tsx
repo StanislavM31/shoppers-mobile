@@ -4,7 +4,7 @@ import { iProduct } from '@/interfaces';
 import { Text, View, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import { useRouter } from 'expo-router';
 
-import Header from '@/components/Header';
+import Header from '@/components/Header/index';
 
 
 function Products() {

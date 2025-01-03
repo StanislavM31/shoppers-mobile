@@ -4,7 +4,7 @@ import { iProduct } from '@/interfaces'
 import Product from '@/assets/images/Product'
 import Product2 from '@/assets/images/SmartWatch'
 import Product3 from '@/assets/images/AdidasShoe'
-import Header from '@/components/header';
+import Header from '@/components/Header';
 import { useRouter } from 'expo-router';
 
 
