@@ -5,14 +5,14 @@ import Product from '@/assets/images/Product'
 import Product2 from '@/assets/images/SmartWatch'
 import Product3 from '@/assets/images/AdidasShoe'
 import Header from '@/components/Header';
-import { useRouter } from 'expo-router';
+import { useRouter, Tabs } from 'expo-router';
 
 
 export default function Products() {
     const router = useRouter()
 
-    const container = storage.map((el: iProduct) =>
-        <TouchableOpacity key={el.id} onPress={() => router.replace(`/detail/${el.id}`)}>
+    const container = storage.map((el: any) =>
+        <TouchableOpacity key={el.id} onPress={() => router.replace(`/detail`)}>
             <View style={styles.item} >
                 {el?.img}
                 <Text style={{ textAlign: 'center', marginTop: 10 }}>{el?.title}</Text>

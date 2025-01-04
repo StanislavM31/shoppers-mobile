@@ -21,14 +21,14 @@ function Products() {
     )
 
     return <>
-    <Header/>
+    {/* <Header/> */}
     <View style={{ gap: 62, flex: 1 }}>
         <View style={{ flexDirection: 'row', gap: 60, justifyContent: 'center', flexWrap: 'wrap' }}>
             {container}
         </View>
 
     </View>
-    <Button title='Back' onPress={()=>router.back()}/>
+    {/* <Button title='Back' onPress={()=>router.back()}/> */}
     </>
 }
 

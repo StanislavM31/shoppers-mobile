@@ -41,6 +41,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)"/>
         <Stack.Screen name="/register" />
         <Stack.Screen name="/products" />
+        <Stack.Screen name="/detail" />
       </Stack>
 
   );
