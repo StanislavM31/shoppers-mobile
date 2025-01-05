@@ -4,19 +4,23 @@ import ImgBack from "@/assets/images/ImgBack";
 import Product from "@/assets/images/Product";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import storage from '../storage/index';
+import storage from '../../storage/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from "expo-router";
+import { useSearchParams } from "expo-router/build/hooks"; //??
 
 
 
 export default function Detail() {
-    /* 25:10 */
+    const params:any = useLocalSearchParams();
+    console.log(params?.id);
+    
     return <>
         <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
             <View>
             <Product style={{ width: 100, height: 100 }} />
 
-                <ImgBack/>
+                <ImgBack onPress={()=>router.replace('/tabs/products')}/>
                 <Share/>
             </View>
         </View >

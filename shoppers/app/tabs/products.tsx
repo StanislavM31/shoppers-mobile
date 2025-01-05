@@ -12,13 +12,13 @@ export default function Products() {
     const router = useRouter()
 
     const container = storage.map((el: any) =>
-        <TouchableOpacity key={el.id} onPress={() => router.replace(`/detail`)}>
+        <View key={el.id} onPress={() => router.replace(`/detail/[id]`)}>
             <View style={styles.item} >
                 {el?.img}
                 <Text style={{ textAlign: 'center', marginTop: 10 }}>{el?.title}</Text>
                 <Text style={{ textAlign: 'center' }}>{el?.price}</Text>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 
     return <View style={{ gap: 62, flex: 1 }}>
