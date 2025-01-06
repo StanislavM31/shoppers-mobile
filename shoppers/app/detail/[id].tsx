@@ -34,6 +34,14 @@ export default function Detail() {
                 <ImgBack onPress={()=>router.replace('/tabs/products')}/>
                 <Share/>
             </View>
+            <View style={{ gap: 14, marginBottom: 38, width: '90%', alignSelf: 'center' }}>
+                <Text style={{ fontFamily: 'InterSemiBold', fontSize: 20, }}>{storage[params.id]?.title}</Text>
+                <Text style={{ fontFamily: 'InterSemiBold', fontSize: 20, }}>Rs. {storage[params.id]?.price}</Text>
+            </View>
+
+            <TouchableOpacity style={styles.btn} >
+                <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#4D1717', }}>Add to Cart</Text>
+            </TouchableOpacity>
 
             <View style={{ gap: 16 }}>
                 <Text style={{ fontFamily: 'InterBold', fontSize: 14, }}>More Details</Text>
