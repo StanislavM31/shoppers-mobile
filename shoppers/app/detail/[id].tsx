@@ -27,17 +27,23 @@ export default function Detail() {
     
     
     return <>
-        <View style={{ gap: 30 }}>
+        <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
             <Product style={{width: '100%' , height: 390 }} />
-            <View style={{position: 'absolute', flexDirection: 'row', justifyContent: 'space-between'}}>
+            <View style={{position: 'absolute', flexDirection: 'row', justifyContent: 'space-between' , width: '85%'}}>
 
                 <ImgBack onPress={()=>router.replace('/tabs/products')}/>
                 <Share/>
             </View>
 
-            <View>
-                <Text>{product?.title}</Text>
-                <Text>{product?.price}</Text>
+            <View style={{ gap: 16 }}>
+                <Text style={{ fontFamily: 'InterBold', fontSize: 14, }}>More Details</Text>
+                <Text style={styles.description} > Gear up with the latest collections from
+                    adidas Originals, Running, Football, Training.
+                    With over 20,000+ products, you will never
+                    run out of choice. Grab your favorites now.
+                    Secure Payments. 100% Original Products.
+                    Gear up with adidas.
+                </Text>
             </View>
         </View >
     </>
