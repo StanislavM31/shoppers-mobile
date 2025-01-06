@@ -14,7 +14,7 @@ export default function Products() {
     const container = storage.map((el: any) =>
         <Pressable key={el.id} onPress={() => router.replace(`/detail/${el.id}`)}>
             
-            <View style={styles.item} >
+            <View style={styles.item} key={el.id} >
                 {el?.img}
                 <Text style={{ textAlign: 'center', marginTop: 10 }}>{el?.title}</Text>
                 <Text style={{ textAlign: 'center' }}>{el?.price}</Text>

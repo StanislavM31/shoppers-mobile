@@ -27,9 +27,9 @@ export default function Detail() {
     
     
     return <>
-        <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
-            <View>
-            <Product style={{ width: 100, height: 100 }} />
+        <View style={{ gap: 30 }}>
+            <Product style={{width: '100%' , height: 390 }} />
+            <View style={{position: 'absolute', flexDirection: 'row', justifyContent: 'space-between'}}>
 
                 <ImgBack onPress={()=>router.replace('/tabs/products')}/>
                 <Share/>
