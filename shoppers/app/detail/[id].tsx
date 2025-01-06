@@ -12,37 +12,28 @@ import { useSearchParams } from "expo-router/build/hooks"; //??
 
 
 export default function Detail() {
-    const params:any = useLocalSearchParams();
+    const params: any = useLocalSearchParams();
     const [product, setProduct] = useState<any>([]);
 
-    useEffect(()=>{
-         const filterStorage = storage.filter((el:any)=>{ 
-            console.log('el.id == params.id', el.id === params.id);
-            return el.id == params.id})
-            setProduct(filterStorage[0]);
-            console.log("filterStorage", filterStorage);
-         
-    },[])
+    useEffect(() => {
+        const filterStorage = storage.filter((el: any) => {
+            return el.id == params.id
+        })
+        setProduct(filterStorage[0]);
+    }, [])
 
-    console.log(params.id);
-    console.log('storage=>>', storage);
-    console.log('product=>>', product);
-    
-    
-    
+
     return <>
         <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
-            <View style={{position: 'absolute', flexDirection: 'row', justifyContent: 'space-between' , width: '85%'}}>
-
-                <ImgBack onPress={()=>router.replace('/tabs/products')}/>
-                <Share/>
+        <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: 52 }}>
+                <ImgBack onPress={() => router.replace('/tabs/products')} />
+                <Share />
             </View>
-            <Product style={{width: '100%' , height: 390 }}/>
+            {/* <Product style={{width: '100%' , height: 390 }}/> */}
+            <View style={{ width: '100%', height: 390 }}>{product?.img}</View>
             <View style={{ gap: 14, marginBottom: 38, width: '90%', alignSelf: 'center' }}>
-                <Text style={{ fontFamily: 'InterSemiBold', fontSize: 20, }}>{product?.title}</Text>
-                {/* <View style={{width: '100%' , height: 390 }}></View> */}
-                
-                <Text style={{ fontFamily: 'InterSemiBold', fontSize: 20, }}>Rs. {product?.price}</Text>
+                <Text style={{ fontFamily: 'InterBold', fontSize: 20, }}>{product?.title}</Text>
+                <Text style={{ fontFamily: 'InterBold', fontSize: 20, }}>Rs. {product?.price}</Text>
             </View>
 
             <TouchableOpacity style={styles.btn} >
