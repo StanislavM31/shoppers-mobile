@@ -14,6 +14,8 @@ import { useSearchParams } from "expo-router/build/hooks"; //??
 export default function Detail() {
     const params:any = useLocalSearchParams();
     console.log(params?.id);
+
+    
     
     return <>
         <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
