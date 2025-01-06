@@ -14,7 +14,16 @@ import { useSearchParams } from "expo-router/build/hooks"; //??
 export default function Detail() {
     const params:any = useLocalSearchParams();
     console.log(params?.id);
+    const [product, setProduct] = useState<any>(null);
 
+    useEffect(()=>{
+         const filterStorage = storage.filter((el:any)=> el.id == params.id)
+         setProduct({...filterStorage});
+    },[])
+
+    console.log(params.id);
+    console.log(storage);
+    
     
     
     return <>
@@ -24,6 +33,11 @@ export default function Detail() {
 
                 <ImgBack onPress={()=>router.replace('/tabs/products')}/>
                 <Share/>
+            </View>
+
+            <View>
+                <Text>{product?.title}</Text>
+                <Text>{product?.price}</Text>
             </View>
         </View >
     </>

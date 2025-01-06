@@ -19,7 +19,7 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen 
-        name="user" 
+        name="user"
         options={{
           title: '',
           tabBarIcon: ({ focused }: { focused: boolean }) => (
