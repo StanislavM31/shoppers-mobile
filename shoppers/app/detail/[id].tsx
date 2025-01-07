@@ -22,16 +22,13 @@ export default function Detail() {
         })
         setProduct(filterStorage[0]);
     }, [])
+    const basket = [];
 
     const addToBasket = async () => {
         try {
-            const gettingData: any = await AsyncStorage.getItem('prod')
-            const products = JSON.parse(gettingData) || []
-
-            products.push({ ...product[0], img: '' })
-            await AsyncStorage.setItem('prod', JSON.stringify(products))
-            // console.log('success')
-            router.replace('/(tabs)/cart')
+            basket.push(product)
+            console.log('');
+            
         } catch (error: any) {
             console.error(error.message)
         }
