@@ -23,6 +23,21 @@ export default function Detail() {
         setProduct(filterStorage[0]);
     }, [])
 
+    const addToBasket = async () => {
+        try {
+            const gettingData: any = await AsyncStorage.getItem('prod')
+            const products = JSON.parse(gettingData) || []
+
+            products.push({ ...product[0], img: '' })
+            await AsyncStorage.setItem('prod', JSON.stringify(products))
+            // console.log('success')
+            router.replace('/(tabs)/cart')
+        } catch (error: any) {
+            console.error(error.message)
+        }
+
+    }
+
 
     return <>
         <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
@@ -45,7 +60,7 @@ export default function Detail() {
                 <Text style={{ fontFamily: 'InterBold', fontSize: 20, }}>Rs. {product?.price}</Text>
             </View>
 
-            <TouchableOpacity style={styles.btn} >
+            <TouchableOpacity style={styles.btn} onPress={addToBasket}>
                 <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#4D1717', }}>Add to Cart</Text>
             </TouchableOpacity>
 
