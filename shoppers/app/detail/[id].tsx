@@ -15,7 +15,7 @@ import arrBasket from "@/storage/basket";
 export default function Detail() {
     const params: any = useLocalSearchParams();
     const [product, setProduct] = useState<any>([]);
-    const [basket, setBusket] = useState<any>([]);
+    const [basket, setBasket] = useState<any>([]);
     
     useEffect(() => {
         const filterStorage = storage.filter((el: iProduct) => {
@@ -30,14 +30,11 @@ export default function Detail() {
         try {
             arrBasket.push(product);
             router.replace(`/tabs/cart`);
-            console.log('THE BUSKET IS:', basket);
-            
+            console.log('THE BUSKET IS:', basket);  
         } catch (error: any) {
             console.error(error.message)
         }
-
     }
-
 
     return <>
         <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
