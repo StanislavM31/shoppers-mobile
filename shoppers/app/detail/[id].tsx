@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Share from "@/assets/images/share";
 import ImgBack from "@/assets/images/ImgBack";
 import Product from "@/assets/images/Product";
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import storage from '../../storage/index';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
+import { iProduct } from "@/interfaces";
 import { useSearchParams } from "expo-router/build/hooks"; //??
 
 
@@ -16,7 +17,7 @@ export default function Detail() {
     const [product, setProduct] = useState<any>([]);
 
     useEffect(() => {
-        const filterStorage = storage.filter((el: any) => {
+        const filterStorage = storage.filter((el: iProduct) => {
             return el.id == params.id
         })
         setProduct(filterStorage[0]);
@@ -25,11 +26,19 @@ export default function Detail() {
 
     return <>
         <View style={{ flex: 1, marginHorizontal: 30, alignItems: 'center' }}>
-        <View style={{ position: 'absolute', flexDirection: 'row', justifyContent: 'space-between', width: '100%', marginTop: 52 }}>
-                <ImgBack onPress={() => router.replace('/tabs/products')} />
-                <Share />
-            </View>
-            {/* <Product style={{width: '100%' , height: 390 }}/> */}
+        <View style={{
+    /* position: 'absolute', */
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 52,
+/*     borderWidth: 1,
+    borderColor: 'black',
+    borderStyle: 'solid'  */
+}}>
+            <TouchableOpacity onPress={() => router.replace(`/tabs/products`)}><ImgBack /></TouchableOpacity>
+            <Share />
+        </View>
             <View style={{ width: '100%', height: 390 }}>{product?.img}</View>
             <View style={{ gap: 14, marginBottom: 38, width: '90%', alignSelf: 'center' }}>
                 <Text style={{ fontFamily: 'InterBold', fontSize: 20, }}>{product?.title}</Text>
