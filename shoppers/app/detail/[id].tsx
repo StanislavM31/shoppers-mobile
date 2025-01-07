@@ -22,9 +22,13 @@ export default function Detail() {
         })
         setProduct(filterStorage[0]);
     }, [])
+    const basket:any = [];
+
     const addToBasket = async () => {
         try {
-
+            basket.push(product)
+            console.log('THE BUSKET IS:', basket);
+            
         } catch (error: any) {
             console.error(error.message)
         }
