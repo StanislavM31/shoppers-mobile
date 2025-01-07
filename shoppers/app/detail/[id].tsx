@@ -9,24 +9,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
 import { iProduct } from "@/interfaces";
 import { useSearchParams } from "expo-router/build/hooks"; //??
-
+import arrBasket from "@/storage/basket";
 
 
 export default function Detail() {
     const params: any = useLocalSearchParams();
     const [product, setProduct] = useState<any>([]);
-
+    const [basket, setBusket] = useState<any>([]);
+    
     useEffect(() => {
         const filterStorage = storage.filter((el: iProduct) => {
             return el.id == params.id
         })
         setProduct(filterStorage[0]);
     }, [])
-    const basket:any = [];
 
-    const addToBasket = async () => {
+
+
+    function addToBasket (){
         try {
-            basket.push(product)
+            arrBasket.push(product);
+            router.replace(`/tabs/cart`);
             console.log('THE BUSKET IS:', basket);
             
         } catch (error: any) {
