@@ -30,22 +30,13 @@ export default function basket() {
         }
       }
     }
-/*     console.log('result');
-    console.log(result);
-    console.log('goods');
-    console.log(goods);
-     */
+
 		setGoods(result);
-
-    
 	}
-
 
   useEffect(() => {
 		loadBasketFromAsyncStorage();
 	}, [])
-
-  const router = useRouter();
 
   return (
     <>
@@ -58,7 +49,7 @@ export default function basket() {
             {goods.map((el: any) => (
               <View key={el.id} style={styles.item}>
                 <View style={{width: 136, height: 113, borderRadius: 25, overflow: "hidden"}}>
-                {/*   {el?.img} */}
+                  {el?.img}
                 </View>
                 <View style={{ gap: 13 }}>
                   <Text style={[styles.text, {marginRight: "2%" }]}>{el?.title}</Text>

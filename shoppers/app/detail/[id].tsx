@@ -15,42 +15,25 @@ import arrBasket from "@/storage/basket";
 export default function Detail() {
     const params: any = useLocalSearchParams();
     const [product, setProduct] = useState<any>([]);
-    const [basket, setBasket] = useState<any>([]);
     
     useEffect(() => {
         const filterStorage = storage.filter((el: iProduct) => {
             return el.id == params.id
         })
-        console.log('================');
-        console.log(filterStorage);
-        console.log(filterStorage[0]);
-        
+
         setProduct(filterStorage[0]);
     }, [])
 
-
-
     const addToBasket = async () => {
         try {
-/*             console.log("product (1) !!!");
-            console.log(product); */
             const gettingData: any = await AsyncStorage.getItem('items')
-            const products = JSON.parse(gettingData) || []
-            
+            const products = JSON.parse(gettingData) || [];
             products.push({ ...product, img: '' })
             await AsyncStorage.setItem('items', JSON.stringify(products))
-            /* console.log('success') */
-            
-/*             const exitingProducts = await AsyncStorage.getItem('items')
-		    const parsed = exitingProducts && JSON.parse(exitingProducts) || []
-            console.log('зкщв№;%:?*(*?:%%;№№"')
-            console.log(exitingProducts)
-            console.log(parsed) */
             router.replace('/tabs/cart')
         } catch (error: any) {
             console.error(error.message)
         }
-
     }
 
     return <>
