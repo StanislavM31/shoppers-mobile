@@ -6,25 +6,45 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import ImgBack from "@/assets/images/ImgBack";
 import { Router } from "expo-router";
 import { iProduct } from "@/interfaces";
-import arrBasket from "@/storage/basket";
+import storage from '../../storage/index'
 
 export default function basket() {
-  const [goods, setGoods] = useState<iProduct[]>([]);
 
-  const loadBasketFromAsyncStorage = async ()=>{
-    const products = await AsyncStorage.getItem('products');
-    if(!products) return;
-    const parsed = JSON.parse(products);
-    console.log(products);
-    console.log(parsed);
+  const [goods, setGoods] = useState<any>([]);
+
+	const loadBasketFromAsyncStorage = async () => {
+		const exitingProducts = await AsyncStorage.getItem('items')
+		if(!exitingProducts) return;
+    const parsed = JSON.parse(exitingProducts);
+
+    const result = [];
     
-    setGoods(parsed);
-  }
+    if(Array.isArray(parsed)){
+      for (let i = 0; i < storage.length; i++) {
+        
+        for (let j = 0; j < parsed.length; j++) {
+          
+          if(storage[i].id == parsed[j].id){
+            result.push(storage[i]);
+          }
+        }
+      }
+    }
+/*     console.log('result');
+    console.log(result);
+    console.log('goods');
+    console.log(goods);
+     */
+		setGoods(result);
+
+    
+	}
 
 
   useEffect(() => {
-    loadBasketFromAsyncStorage();
-  }, []);
+		loadBasketFromAsyncStorage();
+	}, [])
+
   const router = useRouter();
 
   return (
@@ -35,7 +55,7 @@ export default function basket() {
         <ScrollView style={{ width: "100%" }}>
           <View
             style={{gap: 40,flexWrap: "wrap",justifyContent: "center",width: "90%", marginLeft: "5%"}}>
-            {goods.map((el: iProduct) => (
+            {goods.map((el: any) => (
               <View key={el.id} style={styles.item}>
                 <View style={{width: 136, height: 113, borderRadius: 25, overflow: "hidden"}}>
                 {/*   {el?.img} */}

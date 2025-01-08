@@ -21,31 +21,36 @@ export default function Detail() {
         const filterStorage = storage.filter((el: iProduct) => {
             return el.id == params.id
         })
+        console.log('================');
+        console.log(filterStorage);
+        console.log(filterStorage[0]);
+        
         setProduct(filterStorage[0]);
     }, [])
 
 
 
-    const addToBasket = async (product: iProduct) => {
+    const addToBasket = async () => {
         try {
-            console.log('product-AsyncStorage.setItem');
-            console.log(product);
-    
-            // Получаем текущие продукты из AsyncStorage
-            const existingProducts = await AsyncStorage.getItem('products');
-            const productsArray: iProduct[] = existingProducts ? JSON.parse(existingProducts) : [];
-    
-            // Добавляем новый продукт в массив
-            productsArray.push(product);
-    
-            // Сохраняем обновленный массив обратно в AsyncStorage
-            await AsyncStorage.setItem('products', JSON.stringify(productsArray));
-    
-            console.log('AsyncStorage.setItem');
-            router.replace(`/tabs/cart`); 
-        } catch (error:any) {
-            console.error(error.message);
+/*             console.log("product (1) !!!");
+            console.log(product); */
+            const gettingData: any = await AsyncStorage.getItem('items')
+            const products = JSON.parse(gettingData) || []
+            
+            products.push({ ...product, img: '' })
+            await AsyncStorage.setItem('items', JSON.stringify(products))
+            /* console.log('success') */
+            
+/*             const exitingProducts = await AsyncStorage.getItem('items')
+		    const parsed = exitingProducts && JSON.parse(exitingProducts) || []
+            console.log('зкщв№;%:?*(*?:%%;№№"')
+            console.log(exitingProducts)
+            console.log(parsed) */
+            router.replace('/tabs/cart')
+        } catch (error: any) {
+            console.error(error.message)
         }
+
     }
 
     return <>
@@ -71,7 +76,7 @@ export default function Detail() {
                 <Text style={{ fontFamily: 'InterBold', fontSize: 20, }}>Rs. {product?.price}</Text>
             </View>
 
-            <Pressable style={styles.btn} onPress={() => addToBasket(product)}>
+            <Pressable style={styles.btn} onPress={addToBasket}>
                 <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#4D1717' }}>Add to Cart</Text>
             </Pressable>
 
