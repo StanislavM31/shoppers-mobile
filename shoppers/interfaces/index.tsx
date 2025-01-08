@@ -2,5 +2,5 @@ export interface iProduct {
     id: number;
     title: string;
     price: number;
-    img: any;
+
 }

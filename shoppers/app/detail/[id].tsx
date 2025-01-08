@@ -26,13 +26,25 @@ export default function Detail() {
 
 
 
-    function addToBasket (){
+    const addToBasket = async (product: iProduct) => {
         try {
-            arrBasket.push(product);
-            router.replace(`/tabs/cart`);
-            console.log('THE BUSKET IS:', basket);  
-        } catch (error: any) {
-            console.error(error.message)
+            console.log('product-AsyncStorage.setItem');
+            console.log(product);
+    
+            // Получаем текущие продукты из AsyncStorage
+            const existingProducts = await AsyncStorage.getItem('products');
+            const productsArray: iProduct[] = existingProducts ? JSON.parse(existingProducts) : [];
+    
+            // Добавляем новый продукт в массив
+            productsArray.push(product);
+    
+            // Сохраняем обновленный массив обратно в AsyncStorage
+            await AsyncStorage.setItem('products', JSON.stringify(productsArray));
+    
+            console.log('AsyncStorage.setItem');
+            router.replace(`/tabs/cart`); 
+        } catch (error:any) {
+            console.error(error.message);
         }
     }
 
@@ -48,7 +60,9 @@ export default function Detail() {
     borderColor: 'black',
     borderStyle: 'solid'  */
 }}>
-            <TouchableOpacity onPress={() => router.replace(`/tabs/products`)}><ImgBack /></TouchableOpacity>
+            <Pressable onPress={() => router.replace(`/tabs/products`)}>
+                <ImgBack />
+            </Pressable>
             <Share />
         </View>
             <View style={{ width: '100%', height: 390 }}>{product?.img}</View>
@@ -57,9 +71,9 @@ export default function Detail() {
                 <Text style={{ fontFamily: 'InterBold', fontSize: 20, }}>Rs. {product?.price}</Text>
             </View>
 
-            <TouchableOpacity style={styles.btn} onPress={addToBasket}>
-                <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#4D1717', }}>Add to Cart</Text>
-            </TouchableOpacity>
+            <Pressable style={styles.btn} onPress={() => addToBasket(product)}>
+                <Text style={{ fontFamily: 'InterBold', fontSize: 14, color: '#4D1717' }}>Add to Cart</Text>
+            </Pressable>
 
             <View style={{ gap: 16 }}>
                 <Text style={{ fontFamily: 'InterBold', fontSize: 14, }}>More Details</Text>

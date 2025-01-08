@@ -1,12 +1,5 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ScrollView,
-} from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View, ScrollView} from "react-native";
 import Header from "@/components/Header";
 import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -18,8 +11,19 @@ import arrBasket from "@/storage/basket";
 export default function basket() {
   const [goods, setGoods] = useState<iProduct[]>([]);
 
+  const loadBasketFromAsyncStorage = async ()=>{
+    const products = await AsyncStorage.getItem('products');
+    if(!products) return;
+    const parsed = JSON.parse(products);
+    console.log(products);
+    console.log(parsed);
+    
+    setGoods(parsed);
+  }
+
+
   useEffect(() => {
-    setGoods(arrBasket);
+    loadBasketFromAsyncStorage();
   }, []);
   const router = useRouter();
 
@@ -31,17 +35,14 @@ export default function basket() {
         <ScrollView style={{ width: "100%" }}>
           <View
             style={{gap: 40,flexWrap: "wrap",justifyContent: "center",width: "90%", marginLeft: "5%"}}>
-            {goods.map((el: iProduct, index) => (
-              <View key={index} style={styles.item}>
+            {goods.map((el: iProduct) => (
+              <View key={el.id} style={styles.item}>
                 <View style={{width: 136, height: 113, borderRadius: 25, overflow: "hidden"}}>
-                  {el?.img}
+                {/*   {el?.img} */}
                 </View>
                 <View style={{ gap: 13 }}>
                   <Text style={[styles.text, {marginRight: "2%" }]}>{el?.title}</Text>
-                  <View
-                    style={{flexDirection: "row",gap: 10,alignItems: "center",justifyContent: "center"}}
-                  ></View>
-
+                  <View style={{flexDirection: "row",gap: 10,alignItems: "center",justifyContent: "center"}}></View>
                   <Text style={[styles.text, {  marginRight: "2%" }]}>Rs. {el?.price}</Text>
                 </View>
               </View>
