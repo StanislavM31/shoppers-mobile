@@ -6,13 +6,13 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 export default function NotFoundScreen({ navigation }: any) {
     const router = useRouter();
 
-    useEffect(() => {
+/*     useEffect(() => {
         const timer = setTimeout(() => {
             router.replace('/login');
         }, 1500);
 
         return () => clearTimeout(timer);
-    }, [router]);
+    }, [router]); */
 
     return (
         <TouchableOpacity

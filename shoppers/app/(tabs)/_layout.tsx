@@ -18,9 +18,7 @@ export default function TabLayout() {
         }} 
       />
 
-      <Tabs.Screen 
-        name="user"
-        options={{
+      <Tabs.Screen name="user" options={{
           title: '',
           tabBarIcon: ({ focused }: { focused: boolean }) => (
             <FontAwesome6 name="user-large" size={24} color={focused ? 'yellow' : 'black'} />
@@ -35,7 +33,8 @@ export default function TabLayout() {
           tabBarIcon: ({ focused }: { focused: boolean }) => (
             <MaterialIcons name="shopping-cart" size={30} color={focused ? 'yellow' : 'black'} />
           ),
-        }} 
+        }}
+
       />
     </Tabs>
   );

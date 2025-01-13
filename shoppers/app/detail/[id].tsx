@@ -30,7 +30,7 @@ export default function Detail() {
             const products = JSON.parse(gettingData) || [];
             products.push({ ...product, img: '' })
             await AsyncStorage.setItem('items', JSON.stringify(products))
-            router.replace('/tabs/cart')
+            router.replace('/cart')
         } catch (error: any) {
             console.error(error.message)
         }
@@ -48,7 +48,7 @@ export default function Detail() {
     borderColor: 'black',
     borderStyle: 'solid'  */
 }}>
-            <Pressable onPress={() => router.replace(`/tabs/products`)}>
+            <Pressable onPress={() => router.replace(`/products`)}>
                 <ImgBack />
             </Pressable>
             <Share />
